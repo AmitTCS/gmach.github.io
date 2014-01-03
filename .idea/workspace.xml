@@ -1,45 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f09c9bd-d2d7-404a-8cee-b1d2820034e5" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\css\bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\css\font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\css\main.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\font\fontawesome-webfont-.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\font\fontawesome-webfont-v=3.2.1.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\font\fontawesome-webfont-v=3.2.1.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\font\fontawesome-webfont-v=3.2.1.woff" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\font\fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\fonts\glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\fonts\glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\fonts\glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\fonts\glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\header-bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\item-01.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\item-02.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\item-bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\portfolio-bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\s1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\s2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\s3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\s4.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\team01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\team02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\team03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\team04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\work1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\work2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\img\work3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\Chart.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\classie.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\main.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\assets\js\smoothscroll.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\gmach.github.io\www.mkprojects.com\index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-    </list>
+    <list default="true" id="9f09c9bd-d2d7-404a-8cee-b1d2820034e5" name="Default" comment="" />
     <ignored path="gmach.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,19 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="28" selection-start="5390" selection-end="5411" vertical-scroll-proportion="-9.038462" vertical-offset="1890" max-vertical-offset="8313">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www.mkprojects.com.au/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.1706424" vertical-offset="2273" max-vertical-offset="3910">
+            <state line="95" column="99" selection-start="3637" selection-end="3643" vertical-scroll-proportion="0.3326923" vertical-offset="1442" max-vertical-offset="8313">
               <folding />
             </state>
           </provider>
@@ -174,6 +127,42 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -187,13 +176,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -220,16 +209,16 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/www.mkprojects.com.au/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="28" selection-start="5390" selection-end="5411" vertical-scroll-proportion="-9.038462" vertical-offset="1890" max-vertical-offset="8313">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.1706424" vertical-offset="2273" max-vertical-offset="3910">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www.mkprojects.com.au/index.html">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.1706424" vertical-offset="2273" max-vertical-offset="3910">
+        <state line="95" column="99" selection-start="3637" selection-end="3643" vertical-scroll-proportion="0.3326923" vertical-offset="1442" max-vertical-offset="8313">
           <folding />
         </state>
       </provider>
