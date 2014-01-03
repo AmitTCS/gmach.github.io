@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f09c9bd-d2d7-404a-8cee-b1d2820034e5" name="Default" comment="" />
+    <list default="true" id="9f09c9bd-d2d7-404a-8cee-b1d2820034e5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+    </list>
     <ignored path="gmach.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="99" selection-start="3637" selection-end="3643" vertical-scroll-proportion="0.3326923" vertical-offset="1442" max-vertical-offset="8313">
+            <state line="125" column="106" selection-start="5468" selection-end="5468" vertical-scroll-proportion="0.92115384" vertical-offset="1646" max-vertical-offset="8313">
               <folding />
             </state>
           </provider>
@@ -218,7 +220,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="99" selection-start="3637" selection-end="3643" vertical-scroll-proportion="0.3326923" vertical-offset="1442" max-vertical-offset="8313">
+        <state line="125" column="106" selection-start="5468" selection-end="5468" vertical-scroll-proportion="0.92115384" vertical-offset="1646" max-vertical-offset="8313">
           <folding />
         </state>
       </provider>
