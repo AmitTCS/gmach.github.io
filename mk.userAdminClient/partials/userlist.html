@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+            <thead>
+            <a href="#/add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new user</a>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>UserName</th>
+                <th>Password</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="user in users | orderByPriority">
+                <td><input ng-show="user.isDirty" ng-model="user.firstName" type="text" required/><a ng-hide="user.isDirty" href="#/user/{{user.$id}}" class="thumb">{{user.firstName}}</a></td>
+                <td><input ng-show="user.isDirty" ng-model="user.lastName" type="text"  required/><a ng-hide="user.isDirty" href="#/user/{{user.$id}}" class="thumb">{{user.lastName}}</a></td>
+                <td><input ng-show="user.isDirty" ng-model="user.email" type="text" required/><a ng-hide="user.isDirty" href="#/user/{{user.$id}}" class="thumb">{{user.email}}</a></td>
+                <td><input ng-show="user.isDirty" ng-model="user.username" type="text" required /><a ng-hide="user.isDirty" href="#/user/{{user.$id}}" class="thumb">{{user.username}}</a></td>
+                <td><input ng-show="user.isDirty" ng-model="user.password" type="text"  required /><a ng-hide="user.isDirty" href="#/user/{{user.$id}}" class="thumb">{{user.password}}</a></td>
+                <td class="text-center">
+                    <a ng-hide="user.isDirty" class='btn btn-info btn-xs' ng-click="editUser(user)"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                    <a ng-show="user.isDirty" class='btn btn-info btn-xs' ng-click="saveUser(user)"><span class="glyphicon glyphicon-edit"></span> Save</a>
+                    <a ng-click="deleteUser(user)"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+            </tr>
+
+        </table>
+    </div>
+</div>

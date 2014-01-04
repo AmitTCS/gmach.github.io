@@ -1,0 +1,29 @@
+<div id="signuppanel" class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+            <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
+            <form name="signupform"  class="form" role="form">
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <input ng-model="customer.firstName" class="form-control" name="firstName" placeholder="First Name" type="text"
+                               required autofocus />
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <input ng-model="customer.lastName" class="form-control" name="lastName" placeholder="Last Name" type="text" required />
+                    </div>
+                </div>
+                <input ng-model="customer.email" class="form-control" name="email" placeholder="Your Email" type="email" required/>
+                <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
+                <input ng-model="customer.username" class="form-control" name="username" placeholder="New UserName" type="text" required/>
+                <input ng-model="customer.password" class="form-control" name="password" placeholder="New Password" type="password" required/>
+
+                <br />
+                <br />
+                <a href="#/" class="btn">Cancel</a>
+                <button ng-disabled="signupform.$invalid" ng-click="addUser()" class="btn btn-lg btn-primary btn-block">
+                    Sign up</button>
+            </form>
+            <div ng-show="result">{{result}}<a href='#/'>Show Lists</a></div>
+        </div>
+    </div>
+</div>
