@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9f09c9bd-d2d7-404a-8cee-b1d2820034e5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/main.css" afterPath="$PROJECT_DIR$/assets/css/main.css" />
     </list>
     <ignored path="gmach.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +29,16 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="32" selection-start="4178" selection-end="4186" vertical-scroll-proportion="-0.014678899" vertical-offset="1793" max-vertical-offset="8347">
+            <state line="134" column="38" selection-start="5961" selection-end="5961" vertical-scroll-proportion="0.75412846" vertical-offset="1867" max-vertical-offset="8398">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="278" column="12" selection-start="4443" selection-end="4454" vertical-scroll-proportion="0.0" vertical-offset="4210" max-vertical-offset="4947">
               <folding />
             </state>
           </provider>
@@ -53,6 +62,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/assets/css/main.css" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -118,6 +128,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="www.mkprojects.com.au" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gmach.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gmach.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gmach.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gmach.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -229,12 +271,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www.mkprojects.com.au/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.1706424" vertical-offset="2273" max-vertical-offset="3910" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6660551" vertical-offset="908" max-vertical-offset="3910">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="278" column="12" selection-start="4443" selection-end="4454" vertical-scroll-proportion="0.0" vertical-offset="4210" max-vertical-offset="4947">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="32" selection-start="4178" selection-end="4186" vertical-scroll-proportion="-0.014678899" vertical-offset="1793" max-vertical-offset="8347">
+        <state line="134" column="38" selection-start="5961" selection-end="5961" vertical-scroll-proportion="0.75412846" vertical-offset="1867" max-vertical-offset="8398">
           <folding />
         </state>
       </provider>
