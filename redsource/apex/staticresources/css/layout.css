@@ -1,0 +1,88 @@
+            #headerarea {
+                position: relative;
+                z-index: 30;
+            }
+            div.leftcol {
+                float: left;
+                width: 220px;
+                padding-left:0px;
+                height:100%;
+                margin:0px;
+            }
+            div.main {
+                background-color: #f4f4f4;
+                margin-top: 10px;
+            }
+            div.maincol {
+                margin: 0;
+            }
+            div.centercol {
+                margin: 0 230px 0 230px;
+                height:100%;
+                padding-right:0;
+                margin-top:10px;
+            }
+            div.rightcol {
+                margin-top:0px;
+                float: right;
+                width: 220px;
+                padding-right:0px;
+                height:100%;
+            }
+
+
+            /* view management styles */
+            #articlewrapper, #chatterwrapper, #searchResultsWrapper, .leftcol, .home, .video_panel {
+                display: none;
+            }
+            div.centercol {
+                margin-left: 0px;
+            }
+
+            .home_view .home, .home_view .leftcol, .home_view .video_panel {
+                display: block;
+            }
+            .home_view div.centercol {
+                margin-left: 230px;
+            }
+
+            .article_view #articlewrapper, .article_view #chatterwrapper {
+                display: block;
+            }
+
+            .searchresults_view #searchResultsWrapper {
+                display: block;
+            }
+
+
+            @keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+
+				/* Firefox */
+            @-moz-keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+
+            /* Safari and Chrome */
+            @-webkit-keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+
+            /* Internet Explorer */
+            @-ms-keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }​
+
+            /* Opera */
+            @-o-keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }​
+
+
+

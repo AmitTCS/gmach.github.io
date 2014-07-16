@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function mypopup()
+    {
+        var lowerOffset = 110;
+        var width = 200;
+        var height = screen.height - lowerOffset;
+
+        var left = screen.width - width - 10;
+        var top = screen.height - height - lowerOffset;
+        mywindow = window.open("agentCalc.html", "agent", "location=0, scrollbars=0, toolbar=0, status=0, width=" + width + ", height=" + height + ", left="+left+", top="+top);
+    }
+
+</script>
+
+<a href="#" onclick="mypopup();">Launch</a>
+</body>
+</html>

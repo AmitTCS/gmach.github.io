@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<script type="text/javascript">
+    ie = 8;
+</script>
+<![endif]-->
+
+<html>
+<head>
+    <title></title>
+    <script >
+
+
+        Object.defineProperty = function (object, property, computedFunObjectWrapper) {
+
+                object[property] = computedFunObjectWrapper.get();
+
+        };
+
+    </script>
+</head>
+<body>
+<script>
+    var obj = {
+        name: "Gavin",
+        phone: 1234
+    }
+
+
+   Object.defineProperty(obj, 'activeSkill', {
+        get: function() {
+            return "fuck";
+        }
+    });
+    var d =1;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent</title>
+    <link href="css/app.css" rel="stylesheet">
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/zeroclipboard/ZeroClipboard.min.js"></script>
+    <script src="lib/jquery-textrange/jquery-textrange.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="lib/angular/ui-utils.min.js"></script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+
+        #messages {
+            clear: both;
+        }
+
+        .msgError {
+            color: red;
+        }
+
+        .msgSuccess {
+            color: green;
+        }
+
+        .bodytxt {
+            border: 0px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<section class="outer" ng-app="agentApp"  ng-controller="TemplatesListCtrl">
+    <header class="block">
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <div class="globe">
+                    <img class="vodafonelogo" src="{!URLFOR($Resource.AHTR_Resources, 'Agent/img/vf_logo_lrg.png')}" width="30" height="30" alt="Vodafone Home"/>
+                </div>
+                <div class="menu on go"><label id="title">Name This App</label></div>
+            </div>
+        </div>
+        <div id="templateChoicesPanel">
+            <div class="skill-switcher">
+                <div class="skill-left" ng-click="prevSkill()">
+                    <div class="navarrow left"></div>
+                </div>
+                <div class="skill-right" ng-click="nextSkill()">
+                    <div class="navarrow right"></div>
+                </div>
+                <div class="skill">{{skills[activeSkill].name}}</div>
+            </div>
+            <div class="functions">
+                <div ng-class="{active: mode == 'resolution'}" class="function"><div ng-click="toggleMode('resolution')" class="vha-vca-cbtn-red">Resolution</div></div>
+                <div ng-class="{active: mode == 'email'}" class="function"><div ng-click="toggleMode('email')" class="vha-vca-cbtn-red">Email</div></div>
+            </div>
+            <div ng-show="mode == 'email'" class="emails">
+                <select ng-model="skills[activeSkill].emailSubject" ng-options="e for e in templateEmails">
+                    <option value="">Please select an email...</option>
+                </select>
+            </div>
+            <div class="templates" id="{{ 's-' + skills[activeSkill].index }}">
+                <div ng-if="mode == 'resolution'" ng-repeat="col in skills[activeSkill].cols">
+                    <div class="col-xs-6">
+                        <div ng-repeat="template in col | resolutionFilter" class="template" ng-class="{highlighted: template.selected}" >
+                            <div class="fkey">F{{template.index}}</div>
+                            <div class="abbrev"  id="{{ 't-' + template.index }}" ng-click="selectResolutionTemplate(template)" ng-model="template.template.Body__c" popover="{{template.template.Body__c}}" popover-trigger="mouseenter" popover-placement="bottom">{{template.template.Name}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="mode == 'email'" ng-repeat="col in skills[activeSkill].cols">
+                    <div class="col-xs-6">
+                        <div ng-repeat="template in col | emailFilter" class="template" ng-class="{highlighted: template.selected}" >
+                            <div class="fkey">F{{template.index - 10}}</div>
+                            <div class="abbrev"  id="{{ 't-' + (template.index - 10) }}" ng-click="selectEmailTemplate(template)" ng-model="template.template.Body__c" popover="{{template.template.Body__c}}" popover-trigger="mouseenter" popover-placement="bottom">{{template.template.Name}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="expand bodyHtml">
+            <textarea ng-if="mode == 'resolution'" ng-model="bodytxt" id="bodytxt" class="bodytxt form-control"></textarea>
+            <div ng-if="mode == 'email'" ng-repeat="template in addedEmailSections">
+                <div class="ng-emailSection" ng-model="template" id="{{template.template.Id}}"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="block">
+        <div id="messages"></div>
+        <div class="actionbtns">
+            <div ng-if="mode == 'resolution'" id="clearResbtn" class="tab-btn" ng-click="resetResolutionTemplates()">Clear</div>
+            <div ng-if="mode == 'resolution'" id="copybtn" class="tab-btn">Copy</div>
+            <div ng-if="mode == 'email'" id="clearEmailbtn" class="tab-btn" ng-click="resetEmailTemplates()">Clear</div>
+            <div ng-if="mode == 'email'" id="sendemailbtn" ng-disabled="" ng-click="sendEmail()" class="tab-btn">Send Email</div>
+        </div>
+    </footer>
+</section>
+
+<script src="js/spa_app.js"></script>
+</body>
+</html>

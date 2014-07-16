@@ -1,0 +1,35 @@
+<form ng-submit="">
+    <div id="templateChoicesPanel">
+        <div class="skill-switcher">
+            <div class="skill-left" ng-click="prevSkill()">
+                <div class="navarrow left"></div>
+            </div>
+            <div class="skill-right" ng-click="nextSkill()">
+                <div class="navarrow right"></div>
+            </div>
+            <div class="skill">{{skills[activeSkill].name}}</div>
+        </div>
+        <div class="templates" id="{{ 's-' + skills[activeSkill].index }}">
+            <div ng-repeat="col in skills[activeSkill].cols">
+                <div class="col-xs-6">
+                    <div ng-repeat="template in col" class="template" ng-class="{highlighted: template.selected}" >
+                        <div class="fkey">F{{template.index}}</div>
+                        <div class="abbrev"  id="{{ 't-' + template.index }}" ng-click="highlightTemplate(template)" ng-model="template.template.Body__c" popover="{{template.template.Body__c}}" popover-trigger="mouseenter" popover-placement="bottom">{{template.template.Name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <main>
+        <div class="expand">
+            <textarea ng-model="bodytxt" id="bodytxt" class="bodytxt form-control"></textarea>
+        </div>
+    </main>
+    <footer class="block">
+        <div class="actionbtns" style="margin-left: 400px">
+            <input id="nextbtn" ng-disabled="" ng-click="loadParameterLists()" class="tab-btn"  type="submit" class="button" value="Next"/>
+        </div>
+    </footer>
+
+</form>

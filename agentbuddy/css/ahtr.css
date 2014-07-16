@@ -1,0 +1,924 @@
+@font-face {
+  font-family: "Vodafone Regular";
+  src: url("../fonts/fonco_font_rg_eot.eot");
+  src: url("../fonts/fonco_font_rg_eot.eot?#iefix") format("embedded-opentype"), url("../fonts/fonco_font_rg_woff.woff") format("woff"), url("../fonts/fonco_font_rg_ttf.ttf") format("truetype"), url("fonco_font_rg_svg.svg#VodafoneRgRegular") format("svg");
+}
+
+@font-face {
+  font-family: "Vodafone Light";
+  src: url("fonco_font_lt_eot.eot");
+  src: url("fonco_font_lt_eot.eot?#iefix") format("embedded-opentype"), url("fonco_font_lt_woff.woff") format("woff"), url("fonco_font_lt_ttf.ttf") format("truetype"), url("../fonts/fonco_font_lt_svg.svg#VodafoneLtRegular") format("svg");
+}
+
+@font-face {
+  font-family: "Vodafone Regular Bold";
+  src: url("../fonts/fonco_font_rgbd_eot.eot");
+  src: url("../fonts/fonco_font_rgbd_eot.eot?#iefix") format("embedded-opentype"), url("fonco_font_rgbd_woff.woff") format("woff"), url("fonco_font_rgbd_tff.ttf") format("truetype"), url("../fonts/fonco_font_rgbd_svg.svg#VodafoneRgBd") format("svg");
+}
+
+@font-face {
+  font-family: 'VodafonePTYRgRegular';
+  src: url("https://www.vodafone.com.au/cs/static/fonts/vodafoneptyrg_digital-webfont.eot");
+  src: url("https://www.vodafone.com.au/cs/static/fonts/vodafoneptyrg_digital-webfont.eot?#iefix") format("embedded-opentype"), url("https://www.vodafone.com.au/cs/static/fonts/vodafoneptyrg_digital-webfont.woff") format("woff"), url("https://www.vodafone.com.au/cs/static/fonts/vodafoneptyrg_digital-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 21, ../sass/ahtr.scss */
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 22, ../sass/ahtr.scss */
+section {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 23, ../sass/ahtr.scss */
+header, footer {
+  display: table-row;
+  height: 1px;
+}
+
+/* line 24, ../sass/ahtr.scss */
+main {
+  display: table-row;
+  height: auto;
+}
+
+/* line 25, ../sass/ahtr.scss */
+main .expand {
+  display: table-cell;
+  height: 100%;
+}
+
+/* line 26, ../sass/ahtr.scss */
+main textarea {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 28, ../sass/ahtr.scss */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* line 31, ../sass/ahtr.scss */
+.outer {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 36, ../sass/ahtr.scss */
+.block {
+  display: table-row;
+  height: 1px;
+  width: 100%;
+}
+
+/* line 42, ../sass/ahtr.scss */
+.navbar-inverse {
+  background-color: #f80000;
+}
+
+/* line 46, ../sass/ahtr.scss */
+.navbar-header {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 51, ../sass/ahtr.scss */
+div.navbar {
+  margin-bottom: 0px;
+  min-height: 0;
+  border: 0px;
+}
+
+/* line 57, ../sass/ahtr.scss */
+.navbar-toggle {
+  padding: 0px 5px;
+  margin-right: 0px;
+}
+
+/* line 61, ../sass/ahtr.scss */
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #f4f4f4;
+}
+
+/* line 65, ../sass/ahtr.scss */
+.navbar-inverse .navbar-toggle {
+  border-color: #fff;
+}
+
+/* line 69, ../sass/ahtr.scss */
+.panel {
+  margin-bottom: 0px;
+}
+
+/* line 73, ../sass/ahtr.scss */
+.templates {
+  padding-bottom: 3px;
+}
+
+/* line 77, ../sass/ahtr.scss */
+.template {
+  border-top: 1px solid #eaeaea;
+}
+
+/* line 81, ../sass/ahtr.scss */
+.fkey {
+  display: inline-block;
+  width: 27px;
+  font-size: 12px;
+  color: #525252;
+  text-align: center;
+  height: 18px;
+  margin-right: -6px;
+}
+
+/* line 91, ../sass/ahtr.scss */
+.abbrev {
+  display: inline-block;
+  width: 168px;
+  max-width: 168px;
+  font-size: 12px;
+  padding: 0 3px 0 3px;
+  color: #525252;
+  cursor: pointer;
+  height: 18px;
+}
+
+/* line 102, ../sass/ahtr.scss */
+.highlighted {
+  background: #eaeaea;
+}
+
+/* line 106, ../sass/ahtr.scss */
+.col-xs-6 {
+  min-width: 200px;
+  padding: 0 0 0 0;
+}
+
+/* line 111, ../sass/ahtr.scss */
+.btn:hover, .btn:focus {
+  color: #fff;
+}
+
+/* line 115, ../sass/ahtr.scss */
+.btn-vodafone-strong {
+  color: white;
+  background-color: #3d3d3d;
+  padding: 11px 0;
+  -moz-box-shadow: 0px 2px 3px 1px #000;
+  -webkit-box-shadow: 0px 2px 3px 1px #000;
+  box-shadow: 0px 2px 3px 1px #000;
+  font-family: arial, helvetica, clean, sans-serif;
+  font-weight: normal;
+}
+/* line 126, ../sass/ahtr.scss */
+.btn-vodafone-strong:hover {
+  background-color: #000000;
+  color: #fff;
+}
+/* line 130, ../sass/ahtr.scss */
+.btn-vodafone-strong:active {
+  -moz-box-shadow: inset 0px 2px 3px 1px #000;
+  -webkit-box-shadow: inset 0px 2px 3px 1px #000;
+  box-shadow: inset 0px 2px 3px 1px #000;
+}
+
+/* line 137, ../sass/ahtr.scss */
+.btn-vodafone-secondary {
+  color: #333333;
+  background-color: #ffffff;
+  -moz-box-shadow: 0px 2px 3px 1px #000;
+  -webkit-box-shadow: 0px 2px 3px 1px #000;
+  box-shadow: 0px 2px 3px 1px #000;
+  font-family: 'Vodafone Regular', Arial Bold, sans-serif;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 145, ../sass/ahtr.scss */
+.btn-vodafone-secondary:hover {
+  color: #333333;
+  background-color: #f4f4f4;
+}
+
+/* line 152, ../sass/ahtr.scss */
+.form-control:focus {
+  border-color: #E9667B;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e9667b;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e9667b;
+}
+
+/* line 159, ../sass/ahtr.scss */
+.panel-primary {
+  border-color: #d3d3d3;
+}
+
+/* line 163, ../sass/ahtr.scss */
+label {
+  font-family: arial, helvetica, clean, sans-serif;
+  font-weight: 400;
+  font-size: 1.3em;
+  color: black;
+  /*#666;*/
+}
+
+/* line 169, ../sass/ahtr.scss */
+.bodytxt {
+  background-color: #fff;
+  border-top: solid 1px #d3d3d3;
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+/* line 176, ../sass/ahtr.scss */
+.actionbtns {
+  height: 41px;
+}
+
+/* line 181, ../sass/ahtr.scss */
+#sassarithmetic {
+  font: 10px/8px;
+  width: 500px;
+  width: 1;
+  height: 250px;
+  margin-left: 9px;
+}
+
+/* line 190, ../sass/ahtr.scss */
+.actionbtns {
+  height: 41px;
+}
+/* line 192, ../sass/ahtr.scss */
+.actionbtns .tab-btn {
+  cursor: pointer;
+  text-align: center;
+  line-height: normal;
+  font-size: 18px;
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+  color: #FFFFFF;
+  display: inline-block;
+  padding: 11px 0;
+  border-left: 1px solid #616161;
+  border-right: 1px solid #000000;
+  font-family: VodafonePTYRgRegular,"Trebuchet MS",sans-serif;
+  font-weight: normal;
+  background: -moz-linear-gradient(top, #4f4f4f, black);
+  background: -webkit-gradient(linear, left top, left bottom, from(#4f4f4f), to(black));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f4f4f', endColorstr='#000000');
+  position: relative;
+  z-index: 1000;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 217, ../sass/ahtr.scss */
+.actionbtns .tab-btn:hover {
+  background: #3f3f3f;
+}
+/* line 221, ../sass/ahtr.scss */
+.actionbtns .tab-btn #copybtn.zeroclipboard-is-hover {
+  background: #3f3f3f;
+}
+
+/* line 229, ../sass/ahtr.scss */
+.actionbtns .tab-btn:active, .actionbtns #copybtn.zeroclipboard-is-active {
+  color: black;
+  font-weight: 900;
+  background: -moz-linear-gradient(top, #f0f0f0, white);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(white));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#ffffff');
+}
+
+/* line 237, ../sass/ahtr.scss */
+.templateChoicesPanel {
+  height: auto;
+}
+
+/* line 241, ../sass/ahtr.scss */
+.glyphicon-question-sign {
+  color: white;
+  margin-left: 10px;
+}
+
+/* line 246, ../sass/ahtr.scss */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+
+/* line 248, ../sass/ahtr.scss */
+.vodafonelogo {
+  margin: 6px 6px;
+}
+
+/* line 252, ../sass/ahtr.scss */
+.globe {
+  height: 42px;
+  width: 45px;
+  display: inline-block;
+  border-right: 1px solid #df0000;
+  float: left;
+}
+
+/* line 260, ../sass/ahtr.scss */
+.menu {
+  overflow: hidden;
+  width: 151px;
+  height: 32px;
+  padding-top: 11px;
+  padding-left: 3px;
+  cursor: pointer;
+}
+/* line 267, ../sass/ahtr.scss */
+.menu label {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 0px;
+  font-family: arial, helvetica, clean, sans-serif;
+  font-weight: normal;
+  padding-left: 5px;
+  width: 1000px;
+  cursor: pointer;
+}
+
+/* line 282, ../sass/ahtr.scss */
+.menu.on {
+  background: #bd0000;
+}
+
+/* line 286, ../sass/ahtr.scss */
+.menu.go:hover, .menu:active {
+  background: white;
+}
+
+/* line 290, ../sass/ahtr.scss */
+.menu.go:hover label, .menu:active label {
+  color: #333;
+}
+
+/* line 294, ../sass/ahtr.scss */
+.skill-switcher {
+  background: white;
+}
+
+/* line 298, ../sass/ahtr.scss */
+.skill-switcher .skill {
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  height: 32px;
+  padding-top: 11px;
+}
+
+/* line 306, ../sass/ahtr.scss */
+.skill-left {
+  float: left;
+  margin-top: -4px;
+  width: 50%;
+  margin-right: -50%;
+  position: relative;
+  z-index: 10;
+}
+
+/* line 315, ../sass/ahtr.scss */
+.skill-right {
+  float: right;
+  margin-top: -4px;
+  width: 50%;
+  margin-left: -50%;
+  position: relative;
+  z-index: 10;
+}
+
+/* line 324, ../sass/ahtr.scss */
+.skill-right .navarrow.right {
+  float: right;
+}
+
+/* line 328, ../sass/ahtr.scss */
+.navarrow {
+  background: url(https://www.vodafone.com.au/cs/static/img/vha_vca_short_arrows.png);
+  width: 24px;
+  height: 52px;
+  background-repeat: no-repeat;
+  -webkit-transform: scale(0.7, 0.7);
+  -moz-transform: scale(0.7, 0.7);
+  -ms-transform: scale(0.7, 0.7);
+  transform: scale(0.7, 0.7);
+  margin-top: -1px;
+}
+
+/* line 340, ../sass/ahtr.scss */
+.navarrow.left {
+  background-position: 0px 0px;
+  margin-left: -1px;
+}
+
+/* line 345, ../sass/ahtr.scss */
+.navarrow.left:hover, .skill-left:hover .navarrow.left {
+  background-position: 0 -53px;
+}
+
+/* line 349, ../sass/ahtr.scss */
+.navarrow.left:active, .skill-left:active .navarrow.left {
+  background-position: -0px -107px;
+}
+
+/* line 353, ../sass/ahtr.scss */
+.navarrow.right {
+  background-position: -26px 0px;
+  margin-right: -1px;
+}
+
+/* line 358, ../sass/ahtr.scss */
+.navarrow.right:hover, .skill-right:hover .navarrow.right {
+  background-position: -26px -53px;
+}
+
+/* line 362, ../sass/ahtr.scss */
+.navarrow.right:active, .skill-right:active .navarrow.right {
+  background-position: -26px -107px;
+}
+
+/* line 368, ../sass/ahtr.scss */
+.popover {
+  left: 0px !important;
+  font-size: 12px;
+  max-width: 100%;
+}
+
+/* line 374, ../sass/ahtr.scss */
+.popover.bottom > .arrow {
+  left: 55px;
+}
+
+/* line 378, ../sass/ahtr.scss */
+.popover-content {
+  padding: 10px;
+}
+
+/* line 382, ../sass/ahtr.scss */
+.function {
+  width: 50%;
+  float: left;
+}
+
+/* line 387, ../sass/ahtr.scss */
+.function.active div {
+  font-weight: bold;
+}
+
+/* line 391, ../sass/ahtr.scss */
+.vha-vca-cbtn-red {
+  text-transform: uppercase;
+  margin: 3px;
+  cursor: pointer;
+  height: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  padding-top: 3px;
+  border-radius: 3px;
+  background-color: #df0000;
+  /*background-image: -webkit-gradient(linear, 0 100%, 0 0, color-stop(-0.26, #cb2026), color-stop(1.1, #e01e26));
+  background-image: -webkit-linear-gradient(bottom, #cb2026 -26%, #e01e26 110%);
+  background-image: -moz-linear-gradient(bottom, #cb2026 -26%, #e01e26 110%);
+  background-image: -o-linear-gradient(bottom, #cb2026 -26%, #e01e26 110%);
+  background-image: linear-gradient(bottom, #cb2026 -26%, #e01e26 110%);*/
+  -moz-box-shadow: 0 1px 0 #950d00;
+  -webkit-box-shadow: 0 1px 0 #950d00;
+  box-shadow: 0 1px 0 #950d00;
+}
+
+/* line 412, ../sass/ahtr.scss */
+.vha-vca-cbtn-red:hover, .function.active .vha-vca-cbtn-red {
+  background-color: #c80404;
+  background-image: -moz-linear-gradient(bottom, #b1181d -26%, #c80404 110%);
+  background-image: -o-linear-gradient(bottom, #b1181d -26%, #c80404 110%);
+  background-image: -webkit-linear-gradient(bottom, #b1181d -26%, #c80404 110%);
+  background-image: linear-gradient(bottom, #b1181d -26%, #c80404 110%);
+}
+
+/* line 419, ../sass/ahtr.scss */
+.vha-vca-cbtn-red:active {
+  -moz-box-shadow: 0 1px 0 #950d00, inset 0 2px 6px rgba(129, 12, 13, 0.9);
+  -webkit-box-shadow: 0 1px 0 #950d00, inset 0 2px 6px rgba(129, 12, 13, 0.9);
+  box-shadow: 0 1px 0 #950d00, inset 0 2px 6px rgba(129, 12, 13, 0.9);
+  background: -moz-linear-gradient(center top, #c9151b, #a11115) repeat scroll 0 0 transparent;
+}
+
+/* line 426, ../sass/ahtr.scss */
+.emails {
+  padding: 0px 3px 3px 3px;
+}
+
+/* line 430, ../sass/ahtr.scss */
+.emails select {
+  width: 100%;
+}
+
+/* line 434, ../sass/ahtr.scss */
+.tooltip {
+  position: absolute;
+  z-index: 1030;
+  display: block;
+  visibility: visible;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* line 445, ../sass/ahtr.scss */
+.tooltip.in {
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+
+/* line 450, ../sass/ahtr.scss */
+.tooltip.top {
+  margin-top: -3px;
+  padding: 5px 0;
+}
+
+/* line 455, ../sass/ahtr.scss */
+.tooltip.right {
+  margin-left: 3px;
+  padding: 0 5px;
+}
+
+/* line 460, ../sass/ahtr.scss */
+.tooltip.bottom {
+  margin-top: 3px;
+  padding: 5px 0;
+}
+
+/* line 465, ../sass/ahtr.scss */
+.tooltip.left {
+  margin-left: -3px;
+  padding: 0 5px;
+}
+
+/* line 470, ../sass/ahtr.scss */
+.tooltip-inner {
+  max-width: 200px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+/* line 480, ../sass/ahtr.scss */
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+/* line 488, ../sass/ahtr.scss */
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-top-color: #000;
+  border-width: 5px 5px 0;
+}
+
+/* line 496, ../sass/ahtr.scss */
+.tooltip.top-left .tooltip-arrow {
+  bottom: 0;
+  left: 5px;
+  border-top-color: #000;
+  border-width: 5px 5px 0;
+}
+
+/* line 503, ../sass/ahtr.scss */
+.tooltip.top-right .tooltip-arrow {
+  bottom: 0;
+  right: 5px;
+  border-top-color: #000;
+  border-width: 5px 5px 0;
+}
+
+/* line 510, ../sass/ahtr.scss */
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-right-color: #000;
+  border-width: 5px 5px 5px 0;
+}
+
+/* line 518, ../sass/ahtr.scss */
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-left-color: #000;
+  border-width: 5px 0 5px 5px;
+}
+
+/* line 526, ../sass/ahtr.scss */
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-bottom-color: #000;
+  border-width: 0 5px 5px;
+}
+
+/* line 534, ../sass/ahtr.scss */
+.tooltip.bottom-left .tooltip-arrow {
+  top: 0;
+  left: 5px;
+  border-bottom-color: #000;
+  border-width: 0 5px 5px;
+}
+
+/* line 541, ../sass/ahtr.scss */
+.tooltip.bottom-right .tooltip-arrow {
+  top: 0;
+  right: 5px;
+  border-bottom-color: #000;
+  border-width: 0 5px 5px;
+}
+
+/* line 548, ../sass/ahtr.scss */
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  display: none;
+  max-width: 276px;
+  text-align: left;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  white-space: normal;
+  padding: 1px;
+}
+
+/* line 566, ../sass/ahtr.scss */
+.popover.top {
+  margin-top: -10px;
+}
+
+/* line 570, ../sass/ahtr.scss */
+.popover.bottom {
+  margin-top: 10px;
+}
+
+/* line 574, ../sass/ahtr.scss */
+.popover.left {
+  margin-left: -10px;
+}
+
+/* line 578, ../sass/ahtr.scss */
+.popover-title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+  margin: 0;
+  padding: 8px 14px;
+}
+
+/* line 589, ../sass/ahtr.scss */
+.popover-content {
+  padding: 9px 14px;
+}
+
+/* line 593, ../sass/ahtr.scss */
+.popover .arrow, .popover .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+/* line 602, ../sass/ahtr.scss */
+.popover .arrow {
+  border-width: 11px;
+}
+
+/* line 606, ../sass/ahtr.scss */
+.popover .arrow:after {
+  content: "";
+  border-width: 10px;
+}
+
+/* line 611, ../sass/ahtr.scss */
+.popover.top .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-width: 0;
+  border-top-color: rgba(0, 0, 0, 0.25);
+  bottom: -11px;
+}
+
+/* line 619, ../sass/ahtr.scss */
+.popover.top .arrow:after {
+  content: " ";
+  bottom: 1px;
+  margin-left: -10px;
+  border-bottom-width: 0;
+  border-top-color: #fff;
+}
+
+/* line 627, ../sass/ahtr.scss */
+.popover.right .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: rgba(0, 0, 0, 0.25);
+}
+
+/* line 635, ../sass/ahtr.scss */
+.popover.right .arrow:after {
+  content: " ";
+  left: 1px;
+  bottom: -10px;
+  border-left-width: 0;
+  border-right-color: #fff;
+}
+
+/* line 643, ../sass/ahtr.scss */
+.popover.bottom .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  top: -11px;
+}
+
+/* line 651, ../sass/ahtr.scss */
+.popover.bottom .arrow:after {
+  content: " ";
+  top: 1px;
+  margin-left: -10px;
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+
+/* line 659, ../sass/ahtr.scss */
+.popover.left .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: rgba(0, 0, 0, 0.25);
+}
+
+/* line 667, ../sass/ahtr.scss */
+.popover.left .arrow:after {
+  content: " ";
+  right: 1px;
+  border-right-width: 0;
+  border-left-color: #fff;
+  bottom: -10px;
+}
+
+/* line 675, ../sass/ahtr.scss */
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+/* line 681, ../sass/ahtr.scss */
+.fade.in {
+  opacity: 1;
+}
+
+/* line 685, ../sass/ahtr.scss */
+input[type='text'] {
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+/* line 698, ../sass/ahtr.scss */
+.bodytxt {
+  border: 0px;
+}
+
+/* line 702, ../sass/ahtr.scss */
+.bodyHtml {
+  border-color: #E9667B;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e9667b;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e9667b;
+}
+
+/* line 709, ../sass/ahtr.scss */
+.msgStatus {
+  clear: both;
+  margin: 0px;
+}
+
+/* line 714, ../sass/ahtr.scss */
+.msgShow, .msgError, .msgSuccess {
+  margin: 5px;
+}
+
+/* line 717, ../sass/ahtr.scss */
+.msgError {
+  color: red;
+}
+
+/* line 722, ../sass/ahtr.scss */
+.msgSuccess {
+  color: green;
+}
+
+/* line 730, ../sass/ahtr.scss */
+pre {
+  border: 0px;
+  background-color: #fff;
+  border-top: solid 1px #d3d3d3;
+  font-family: Arial, sans-serif;
+  color: black;
+  height: 100%;
+  width: 100%;
+  -webkit-appearance: textarea;
+  background-color: white;
+  border: 1px solid;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  flex-direction: column;
+  resize: auto;
+  cursor: auto;
+  padding: 2px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0em;
+  font: -webkit-small-control;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  -webkit-writing-mode: horizontal-tb;
+}
+
+/* line 771, ../sass/ahtr.scss */
+.calcwrapper {
+  position: absolute;
+}
+
+/* line 774, ../sass/ahtr.scss */
+.calculatorPopup {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 700px;
+  display: none;
+  background: #FFF;
+  border: solid 1px #BBBBBB;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px #999;
+}

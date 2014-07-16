@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main" role="main">
+    <form accept-charset="UTF-8" class="form-horizontal clearfix" method="post">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="amount" class="col-xs-4 control-label">Amount:</label>
+                <div class="input-group col-xs-8">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" name="amount" id="amount" min="0" step="0.01" value="100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gst_inclusive" class="col-xs-4 control-label sr-only">GST Inclusive:</label>
+                <div class="col-xs-8">
+                    <select class="form-control" name="gst_inclusive" id="gst_inclusive">
+                        <option value="1">GST Inclusive</option>
+                        <option value="0" selected="">GST Exclusive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gst_percent" class="col-xs-4 control-label">GST Rate:</label>
+                <div class="input-group col-xs-8">
+                    <input type="number" class="form-control" name="gst_percent" id="gst_percent" min="0" step="0.01" value="10">
+                    <span class="input-group-addon">%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input type="submit" value="Calculate" class="btn btn-default pull-right">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="results">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="xs-results-divider"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8"><strong>Net Amount (excluding GST):</strong></div>
+                    <div class="col-xs-4">$100.00</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8"><strong>GST (10%):</strong></div>
+                    <div class="col-xs-4">$10.00</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8"><strong>Gross Amount (including GST):</strong></div>
+                    <div class="col-xs-4">$110.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

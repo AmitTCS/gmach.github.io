@@ -1,0 +1,55 @@
+/* line 6, ../sass/compassboxshadows.sass */
+.box-shadow-example div {
+  width: 40px;
+  height: 40px;
+  background: #eeeeee;
+  margin: 20px;
+  float: left;
+}
+
+/* line 15, ../sass/compassboxshadows.sass */
+#box-shadow-default {
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+}
+
+/* line 19, ../sass/compassboxshadows.sass */
+#box-shadow-custom {
+  -webkit-box-shadow: red 2px 2px 10px;
+  -moz-box-shadow: red 2px 2px 10px;
+  box-shadow: red 2px 2px 10px;
+}
+
+/* line 23, ../sass/compassboxshadows.sass */
+#box-shadow-custom-multiple {
+  -webkit-box-shadow: rgba(0, 0, 255, 0.4) 0 0 25px, rgba(0, 128, 0, 0.2) 0 0 3px 1px inset;
+  -moz-box-shadow: rgba(0, 0, 255, 0.4) 0 0 25px, rgba(0, 128, 0, 0.2) 0 0 3px 1px inset;
+  box-shadow: rgba(0, 0, 255, 0.4) 0 0 25px, rgba(0, 128, 0, 0.2) 0 0 3px 1px inset;
+}
+
+/* line 27, ../sass/compassboxshadows.sass */
+#footer {
+  clear: both;
+}
+
+/* line 31, ../sass/compassboxshadows.sass */
+a {
+  color: #0000cc;
+}
+/* line 18, ../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+a:visited {
+  color: #cccccc;
+}
+/* line 21, ../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+a:focus {
+  color: #cccc00;
+}
+/* line 24, ../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+a:hover {
+  color: #00cccc;
+}
+/* line 27, ../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+a:active {
+  color: #cc00cc;
+}

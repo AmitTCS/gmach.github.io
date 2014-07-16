@@ -1,0 +1,258 @@
+
+
+/* Article Detail Style */
+
+/*   #ArticleDetailPage {
+    width:950px;
+    margin-left:auto;
+    margin-right:auto;
+}*/
+
+#ArticleDetail {
+    text-align:left;
+    width:100%;
+    padding-bottom: 0px;
+    background-color:#ffffff;
+}
+#ArticleDetail .articleBanner {
+    margin-top:0px;
+    height: auto;
+    margin-bottom:10px;
+    overflow:hidden;
+
+
+}
+#ArticleDetail .content,
+#ArticleDetail .articleHeader {
+    font-family: Arial;
+    font-size: 14px!important;
+    line-height: 1.2!important;
+    margin:10px;
+    overflow:hidden;
+    padding-bottom:10px;
+    color: #333;
+}
+
+#ArticleDetail .articleBanner img {
+    width: 100%;
+    max-width:720px;
+    max-height: 150px;
+
+}
+
+#ArticleDetail .content th {
+    font-weight: bold;
+}
+
+#ArticleDetail .content em {
+    font-style: italic;
+}
+
+#ArticleDetail .content ol li {
+    list-style: decimal outside none;
+    margin-left: 20px;
+}
+
+#ArticleDetail .content ul {
+    padding: 15px!important;
+}
+
+#ArticleDetail .content ul li {
+    list-style: disc outside none;
+    margin-left: 20px;
+}
+
+#ArticleDetail .content td {
+    padding: 3px!important;
+}
+
+#ArticleDetail .content p {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+
+#ArticleDetail .content a {
+    color: #333333;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+#ArticleDetail .content a:hover {
+    color: #bf0000;
+    text-decoration: underline;
+}
+
+#ArticleDetail .content a :visited {
+    color: #5E2750;
+}
+
+#ArticleDetail .content a:visited:hover {
+    color: #bf0000;
+}
+
+#ArticleDetail .articleTitle {
+    color: #333!important;
+    font-size: 20px;!important
+    line-height: 1!important;
+    font-family: Arial!important;
+    font-weight: Bold!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+}
+#ArticleDetail .articleSubtitle {
+    color: #808080;
+    font-size: 14px;!important
+}
+
+
+.articleBanner img {
+    width:100%;
+    height:auto;
+}
+
+#ArticleDetail .articleHeader {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+
+#ArticleDetail .content a[href]  { /* PRRS-464 */
+    text-decoration:none;
+    color:blue;
+}
+
+#ArticleDetail .content a[href]:active { /* PRRS-464 */
+    text-decoration:none;
+    color:blue;
+}
+
+#ArticleDetail .content a[href]:hover { /* PRRS-464 */
+    text-decoration:underline;
+    color:blue;
+}
+
+#ArticleDetail .content a[href]:visited { /* PRRS-464 */
+    text-decoration:underline;
+    color:purple;
+}
+
+
+#ArticleDetail .content a[name]:hover {
+    text-decoration:none;
+}
+
+
+
+
+
+.content {
+    width:auto;
+    max-width:1000px;
+    padding-top:0;
+    margin-top:0;
+}
+
+.content td {
+
+    border:1px solid #666666;
+
+}
+.content th {
+
+    border:1px solid #666666;
+
+}
+
+.content > span {
+    display:block;
+    font-family: Arial;
+    font-size:12px!important;
+    font-weight: normal;
+    text-align: left;
+    margin-left:15px;
+
+}
+
+.content > td  {
+    display:block;
+    font-family: VodafonePTYRgRegular, "Trebuchet MS", sans-serif;
+    font-size: 18px!important;
+    font-weight: normal;
+    text-align: left;
+    margin-top:10px;
+    color: #E60000
+}
+
+.content h1  {
+    display:block;
+    font-family: VodafonePTYRgRegular, "Trebuchet MS", sans-serif;
+    font-size: 24px!important;
+    font-weight: normal;
+    text-align: left;
+    color: #E60000;
+    margin-top:10px;
+
+}
+.content h2  {
+    display:block;
+    font-family: VodafonePTYRgRegular, "Trebuchet MS", sans-serif;
+    font-size: 22px!important;
+    font-weight: normal;
+    text-align: left;
+    color: #E60000;
+    margin-top:10px;
+
+}
+.content h3  {
+    display:block;
+    font-family: VodafonePTYRgRegular, "Trebuchet MS", sans-serif;
+    font-size: 18px!important;
+    font-weight: normal;
+    text-align: left;
+    margin-top:10px;
+    color: #E60000
+}
+
+
+
+strong  {
+    display:block;
+
+}
+
+
+.ExternalArticleDisplay p {
+    text-align: left;
+}
+
+
+.FlowFinishBtn {
+    width:120px;
+}
+
+.articleflowform {
+    height:auto
+}
+
+.articleSubtitle tr {
+    background-color:#ffffff;
+}
+
+
+
+/* override the default chatter feed main width 546px*/
+#chatterexpando .feedmain {
+    width : 540px;
+}
+
+
+.zen .zen-options {
+    position: absolute;
+    top: 100%;
+    left: 3px;
+    right: 3px;
+    margin: 0;
+    display: none;
+    overflow: hidden;
+}
+

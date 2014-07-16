@@ -1,0 +1,132 @@
+
+
+/* start Carousel */
+
+/* Prevent the slideshow from flashing on load */
+#slides {
+    display: none;
+    position: relative;
+}
+
+/* Center the slideshow */
+.carouselContainer {
+    margin: 0 auto
+}
+
+/* Show active item in the pagination */
+.slidesjs-pagination .active {
+    color:red;
+}
+
+
+.standalone {
+    margin: 0 auto;
+    width:100%;
+    height:auto;
+    margin-bottom:10px;
+}
+.standalone img {
+    width:100%;
+    height:auto;
+
+}
+/* Media quires for a responsive layout */
+
+/* For tablets and smart phones */
+@media (max-width: 767px) {
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .carouselContainer {
+        width: auto;
+        margin-bottom:10px;
+
+    }
+}
+
+/* For smartphones */
+@media (max-width: 480px) {
+    .carouselContainer {
+        width: auto
+    }
+}
+
+/* For smaller displays like laptops */
+@media (min-width: 768px) and (max-width: 979px) {
+    .carouselContainer {
+        width: auto;
+    }
+}
+
+#slides .slidesjs-navigation {
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+}
+
+a.slidesjs-next,
+a.slidesjs-previous {
+    background-repeat: no-repeat;
+    display:block;
+    width:18px;
+    height:22px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+a.slidesjs-next {
+    background-image: url('../images/nav_right.png');
+    left: 47px;
+}
+
+a.slidesjs-previous {
+    background-image: url('../images/nav_left.png');
+    left: 7px;
+}
+
+
+.slidesjs-pagination {
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    z-index: 10;
+    list-style: none;
+}
+
+.slidesjs-pagination li {
+    margin: 0px;
+    float: left
+}
+
+.slidesjs-pagination li a {
+    display: block;
+    width: 12px;
+    height: 22px;
+    background-image: url('../images/nav_page.png');
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+    background-image: url('../images/nav_current_page.png');
+}
+
+#slides a:link,
+#slides a:visited {
+    color: #333
+}
+
+#slides a:hover,
+#slides a:active {
+    color: #9e2020
+}
+.carouselContainer {
+    max-width: 1100px;
+    margin-bottom:10px;
+
+}
+
+
+/* end Carousel */

@@ -133,7 +133,7 @@
             </div>
             <div class="col-lg-3">
                 <p class="workcompany">Agent Buddy</p>
-                <p><more>This is a SPA (Single Page Application) for providing helper tools to reduce call centre handling times. Written with Angular, JavaScript, JQuery, Modernisr, SASS, Git, Grunt, Bower<br/><br/>
+                <p><more>This is a SPA (Single Page Application) written with Angular, JavaScript, JQuery, Modernisr, SASS, Git, Grunt, Bower<br/><br/>
                     <sm><i class="icon-tag"></i> front-end web development</sm></more>
                 </p>
             </div>

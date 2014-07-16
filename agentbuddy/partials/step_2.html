@@ -1,0 +1,20 @@
+ <div id="fieldParametersPanel">
+    <form class="form-horizontal" role="form" ng-submit="">
+        <div ng-repeat="field in parameterList">
+            <div class="form-group">
+                <label for="{{field.Code__c}}" class="col-sm-2 control-label">{{field.Code__c}}</label>
+                <div class="col-sm-10">
+                    <input ng-if="field.RecordType__c == 'Text'" class="form-control" id="{{field.Code__c}}" ng-model="field.value" type="text" placeholder="Enter value for TEXT FIELD :  {{field.Code__c}}" /><br/>
+                    <input ng-if="field.RecordType__c == 'Number'" class="form-control" id="{{field.Code__c}}" ng-model="field.value" type="text" placeholder="Enter value for NUMERIC FIELD :  {{field.Code__c}}" /><br/>
+                    <input ng-if="field.RecordType__c == 'Currency'" class="form-control" id="{{field.Code__c}}" ng-model="field.value" type="text" placeholder="Enter value for CURRENCY FIELD :  {{field.Code__c}}" /><br/>
+                </div>
+            </div>
+        </div>
+        <footer class="block">
+            <div class="actionbtns" style="margin-left: 400px">
+                <input id="prevbtn" class="tab-btn"  type="submit" class="button" value="Previous" ui-sref="step1"/>
+                <input id="nextbtn" class="tab-btn"  type="submit" class="button" value="Next" ui-sref="step3"/>
+            </div>
+        </footer>
+    </form>
+</div>

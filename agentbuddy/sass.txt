@@ -1,0 +1,121 @@
+DRY
+
+2 ways of Sass using SASS indentation and newlines and shorthands(@mixin +include) vs SCSS which can compile straight CSS.
+
+
+
+nested properties (font)
+parent &:hover
+@mixins
+
+Partials
+
+If you have a SCSS or Sass file that you want to import but don’t want to compile to a CSS file, you can add an underscore to the beginning of the filename. This will tell Sass not to compile it to a normal CSS file. You can then import these files without using the underscore.
+
+
+@extend errormsgs
+
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar { width: grid-width(5); }
+Becomes:
+
+#sidebar {
+  width: 240px; }
+
+
+Eg creating mixin :
+@mixin color-text {
+$type: monster;
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+}
+is compiled to:
+
+p {
+  color: green; }
+
+
+@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+
+
+is compiled to:
+
+p {
+  border-color: blue;
+  border-width: 1in;
+  border-style: dashed; }
+
+
+.btn-vodafone-strong eg.
+
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+is compiled to:
+
+.shadows {
+  -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+}
+
+there is also @for and @each and @while for looping
+
+
+Compass provides cross browser cs33 mixins for vendor prefixes.
+eg border-radius
+border-radius($radius, $vertical-radius)
+.simple   { @include border-radius(4px, 4px); }
+
+Which generates:
+
+.simple {
+
+ -webkit-border-radius: 4px 4px;
+ -moz-border-radius: 4px / 4px;
+ -khtml-border-radius: 4px / 4px;
+ border-radius: 4px / 4px; }
+
+#inline-block {
+  @include inline-block;
+
+
+link-colors($normal, $hover, $active, $visited, $focus)
+Set all the colors for a link with one mixin call. Order of arguments is:
+
+normal
+hover
+active
+visited
+focus
+a
+  +link-colors(#00c, #0cc, #c0c, #ccc, #cc0)

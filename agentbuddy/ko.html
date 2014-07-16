@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agent Assist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/app.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/zeroclipboard/ZeroClipboard.min.js"></script>
+    <script src="lib/jquery-textrange/jquery-textrange.js"></script>
+    <script src="lib/knockout/knockout-3.0.0.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <img class="vodafonelogo" src="img/vf_logo_lrg.png" width="30" height="30" alt="Vodafone Home"/>
+            <label class="agentassistbrand" href="#">Agent Assist</label>
+            <span class="glyphicon glyphicon-question-sign" popover="Please select from any of the following automated notes to prepopulate in the body text" popover-trigger="mouseenter" popover-placement="bottom"></span>
+            <button type="button" class="btn-vodafone-secondary navbar-toggle displayit" data-toggle="collapse" data-target="#templateChoicesPanel">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="showhidespan glyphicon glyphicon-chevron-up"></span>
+            </button>
+        </div>
+    </div>
+
+    <form role="form">
+        <div id="templateChoicesPanel" class="collapse in panel panel-primary">
+            <div class="panel-body">
+                <div class="col-xs-6 ">
+                    <div data-bind="foreach: col1Notes">
+                        <div class="checkbox" data-bind="click: $root.selectNote">
+                            <input type="checkbox" data-bind="checkedValue: responseFull, checked: selected"/>
+                            <label data-bind="text: response_Abbrev, css: { 'highlighted': selected }"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 ">
+                    <div data-bind="foreach: col2Notes">
+                        <div class="checkbox" data-bind="click: $root.selectNote">
+                            <input type="checkbox" data-bind="checkedValue: responseFull, checked: selected"/>
+                            <label data-bind="text: response_Abbrev, css: { 'highlighted': selected }"></label>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- panel-body -->
+        </div><!-- templateChoicesPanel -->
+
+        <textarea id="bodytxt" class="bodytxt form-control" rows="32" data-bind="value: bodytxt"></textarea>
+        <div class="actionbtns">
+            <button type="reset" id="clearbtn" class="btn btn-vodafone-strong pull-left" data-bind="click: reset()">CLEAR</button>
+            <button type="button" id="copybtn" class="btn btn-vodafone-strong pull-right" data-clipboard-target="bodytxt">COPY</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+    function AgentAssistTemplate(noteTemplate) {
+        var self = this;
+        self.id = noteTemplate.Id || '';
+        self.name = noteTemplate.Name || '';
+        self.response_Abbrev = ko.observable(noteTemplate.Response_Abbrev__c || '');
+        self.responseFull = ko.observable(noteTemplate.ResponseFull__c || '');
+        self.order = ko.observable(noteTemplate.order__c || '');
+        self.selected = ko.observable(false);
+    }
+
+    function emptyNote() {
+        return new AgentAssistTemplate({id: "-1",name: "",Response_Abbrev__c: "", ResponseFull__c: "", order__c:""});
+    }
+
+    function AgentAssistViewModel(jsonObject) {
+        var self = this;
+        self.agentAssistTemplates = ko.utils.arrayMap(jsonObject, function(note) {
+            try {
+                return new AgentAssistTemplate(note);
+            } catch (e) {
+                console.log("Error in Agent Assist Note Template!");
+                return new emptyNote();
+            }
+        });
+        self.col1Notes = ko.computed(function() {
+            var col1 = self.agentAssistTemplates.slice(0, self.agentAssistTemplates.length / 2);
+            return col1;
+        });
+        self.col2Notes = ko.computed(function() {
+            var col2 = self.agentAssistTemplates.slice(self.agentAssistTemplates.length / 2);
+            return col2;
+        });
+
+        self.selectNote = function(note){
+            ko.utils.arrayForEach(self.agentAssistTemplates, function(item) {
+                if (item === note) {
+                    item.selected(!item.selected());
+                    if (item.selected()) {
+                        var range = $('#bodytxt').textrange();
+                        var startPos = range.position;
+                        $('#bodytxt').textrange('insert', item.responseFull());
+                        $('#bodytxt').textrange('setcursor', startPos + item.responseFull().length); // Unselect the text
+                        self.bodytxt($('#bodytxt').val());
+                    } else {
+                        self.bodytxt(self.bodytxt().replace(item.responseFull(), ''));
+                    }
+                }
+            });
+        }
+        self.bodytxt = ko.observable();
+/*
+        self.bodytxt = ko.computed(function(){
+            var txtBody = '';
+            ko.utils.arrayForEach(self.agentAssistTemplates, function(note) {
+                if (note.selected()) {
+                    txtBody += note.responseFull() + "\n";
+                }
+            });
+            return txtBody;
+        });*/
+
+        self.reset = function() {
+            ko.utils.arrayForEach(self.agentAssistTemplates, function(note) {
+                note.selected(false);
+            });
+        }
+
+    }
+
+    var js = '[{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2W0IAK"},"Name":"response1","ResponseFull__c":"Your call barring will be activated in the next 30 days. Please make sure you agree to the terms and conditions of your contract.","Id":"a3hL0000000K2W0IAK","order__c":1,"Response_Abbrev__c":"callbarringactivated"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2W5IAK"},"Name":"response2","ResponseFull__c":"Your call barring will be deactivated at the end of this month. Please ensure all relevant accounts are also closed.","Id":"a3hL0000000K2W5IAK","order__c":2,"Response_Abbrev__c":"callbarringdeactivated"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WAIA0"},"Name":"response3","ResponseFull__c":"Your service for international roaming will be added to your existing account","Id":"a3hL0000000K2WAIA0","order__c":3,"Response_Abbrev__c":"internationalroaming"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WFIA0"},"Name":"response4","ResponseFull__c":"We are experiencing a service outage with our 4G network. Please be patient while we resolve this.","Id":"a3hL0000000K2WFIA0","order__c":4,"Response_Abbrev__c":"4Gserviceoutage"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WKIA0"},"Name":"response5","ResponseFull__c":"The customer wishes to upgrade their number from Optus. Make sure to ask for their PIN to unlock.","Id":"a3hL0000000K2WKIA0","order__c":5,"Response_Abbrev__c":"upgradeyournumber"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WPIA0"},"Name":"response6","ResponseFull__c":"Inform customer of our recent campaigns and hot offers","Id":"a3hL0000000K2WPIA0","order__c":6,"Response_Abbrev__c":"hotoffers"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WUIA0"},"Name":"response7","ResponseFull__c":"Transfer the customers address phone contacts over from another carrier.","Id":"a3hL0000000K2WUIA0","order__c":7,"Response_Abbrev__c":"transfercontacts"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WZIA0"},"Name":"response8","ResponseFull__c":"Identify with customer their internet usage and bandwidth issues","Id":"a3hL0000000K2WZIA0","order__c":8,"Response_Abbrev__c":"identifyinternetissues"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WeIAK"},"Name":"response9","ResponseFull__c":"Inform the customer of our flagfall pricing and charges","Id":"a3hL0000000K2WeIAK","order__c":9,"Response_Abbrev__c":"informflagfall"},{"attributes":{"type":"AgentAssistNote__c","url":"/services/data/v29.0/sobjects/AgentAssistNote__c/a3hL0000000K2WjIAK"},"Name":"response10","ResponseFull__c":"Resolve the customer complaint with our service","Id":"a3hL0000000K2WjIAK","order__c":10,"Response_Abbrev__c":"ResolveCustomerComplaint"}]';
+    var jsonobj = JSON.parse(js);//{!AgentAssistNotesJson};
+    var viewModel = new AgentAssistViewModel(jsonobj);
+    ko.applyBindings(viewModel);
+
+
+
+
+    $(function() {
+        //alert( "ready!" );
+
+        $('#templateChoicesPanel').on('hidden.bs.collapse', function () {
+            $(".showhidespan").removeClass("glyphicon-chevron-up");
+            $(".showhidespan").addClass("glyphicon-chevron-down");
+        }).on('shown.bs.collapse', function () {
+                    $(".showhidespan").removeClass("glyphicon-chevron-down");
+                    $(".showhidespan").addClass("glyphicon-chevron-up");
+                });
+
+        $("#copybtn").click(function() {
+            new ZeroClipboard(document.getElementById("copybtn"), {
+                moviePath: "lib/zeroclipboard/ZeroClipboard.swf"
+            });
+        });
+
+        $('#templateChoicesPanel label').each(function(index, value ) {
+            $(this).popover({ trigger: "hover",
+                        placement: "right",
+                        content: $(this).prev().val()
+            });
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>

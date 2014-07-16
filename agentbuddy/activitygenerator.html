@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/ahtr_activity.css" rel="stylesheet">
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/zeroclipboard/ZeroClipboard.min.js"></script>
+    <script src="lib/jquery-textrange/jquery-textrange.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="lib/angular/ui-utils.min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<table class="outer" id="ng-app" ng-app="agentApp"  ng-controller="TemplatesListCtrl" cellpadding="0" cellspacing="0">
+    <tr class="block header">
+        <td>
+            <div class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <div class="globe">
+                        <img class="vodafonelogo" src="img/vf_logo_lrg.png" width="30" height="30" alt="Vodafone Home"/>
+                    </div>
+                    <div class="menu on go"><label id="title">Name This App</label></div>
+                </div>
+            </div>
+            <div id="templateChoicesPanel">
+                <div class="skill-switcher">
+                    <div class="skill-left" ng-click="prevSkill()">
+                        <div class="navarrow left"></div>
+                    </div>
+                    <div class="skill-right" ng-click="nextSkill()">
+                        <div class="navarrow right"></div>
+                    </div>
+                    <div class="skill">{{skills[activeSkill].name}}</div>
+                </div>
+                <div class="templates" id="{{ 's-' + skills[activeSkill].index }}">
+                    <div ng-repeat="col in skills[activeSkill].cols">
+                        <div class="col-xs-6">
+                            <div ng-repeat="template in col" class="template" ng-class="{highlighted: template.selected}" >
+                                <div class="fkey">F{{template.index}}</div>
+                                <div class="abbrev" data-template="{{template.Id}}" id="{{ 't-' + template.index }}" ng-click="highlightTemplate(template)" ng-model="template.Body__c" popover="{{template.Body__c}}" popover-trigger="mouseenter" popover-placement="bottom" popover-animation="false">{{template.Name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="main">
+        <td class="expand">
+            <textarea ng-model="bodytxt" id="bodytxt" class="bodytxt form-control"></textarea>
+        </td>
+    </tr>
+    <tr class="block footer">
+        <td>
+            <div class="actionbtns">
+                <div id="clearbtn" class="tab-btn" ng-click="resetTemplates()">Clear</div>
+                <div id="copybtn" class="tab-btn">Copy</div>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+
+    var responsive = new function() {
+        var r = this;
+        $(document).ready(function() {
+            r.header = $('.block.header');
+            r.footer = $('.block.footer');
+            r.textarea = $('#bodytxt');
+            r.globe = $('.globe');
+            r.menu = $('.menu');
+            r.resize = function() {
+                var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                r.textarea.height(h - r.header.height() - r.footer.height());
+                r.menu.width(w - r.globe.width() - 4);
+            };
+            $(window).resize(r.resize);
+            r.resize();
+        });
+    }
+
+    var agentApp = angular.module('agentApp', [
+        'ui.bootstrap',
+        'agentControllers',
+        'agentServices'
+    ]);
+
+    var agentControllers = angular.module('agentControllers', []);
+
+    agentControllers.controller('TemplatesListCtrl', ['$scope', 'Skills',
+        function($scope, Skills) {
+            $scope.skills = Skills;
+            $scope.activeSkill = 0;
+            $scope.bodytxt = '';
+            $scope.highlightTemplate = function(template) {
+                template.selected = !template.selected;
+                if (template.selected) {
+                    var range = $('#bodytxt').textrange();
+                    var startPos = range.position;
+                    $('#bodytxt').textrange('insert', template.Body__c + '\n\n');
+                    $('#bodytxt').textrange('setcursor', startPos + template.Body__c.length + 2); // Unselect the text
+                } else {
+                    $('#bodytxt').val($('#bodytxt').val()
+                            .replace(template.Body__c + '\n\n', '')
+                            .replace(template.Body__c + '\n', '')
+                            .replace(template.Body__c, ''));
+                }
+                $scope.bodytxt = $('#bodytxt').val();
+            };
+            $scope.resetTemplates = function() {
+                $scope.skills.forEach(function(skill) {
+                    skill.templates.forEach(function(template) {
+                        template.selected = false;
+                    });
+                });
+                $('#bodytxt').val('');
+                $('#bodytxt').focus();
+            };
+            $scope.nextSkill = function() {
+                if (++$scope.activeSkill >= $scope.skills.length)
+                    $scope.activeSkill = 0;
+                if (!$('.menu').hasClass('on'))
+                    $scope.flashTitle($scope.skills[$scope.activeSkill].name);
+                $scope.$apply();
+                responsive.resize();
+            }
+            $scope.prevSkill = function() {
+                if (--$scope.activeSkill < 0)
+                    $scope.activeSkill = $scope.skills.length - 1;
+                if (!$('.menu').hasClass('on'))
+                    $scope.flashTitle($scope.skills[$scope.activeSkill].name);
+                $scope.$apply();
+                responsive.resize();
+            }
+            var title = $('#title').html();
+            var flashHandle = null;
+            $scope.flashTitle = function(text) {
+                $('#title').html('<b>' + text + '</b>');
+                if (flashHandle)
+                    clearTimeout(flashHandle);
+                flashHandle = window.setTimeout(function() { $('#title').html(title); }, 1000);
+            }
+            var ctrl = 0;
+            $(document).keydown(function(event) {
+                //console.log(event.which);
+                if (event.which == 17) {
+                    ctrl = 1;
+                    return true;
+                } else if (ctrl == 1) {
+                    return true;
+                } else if (event.which == 9) {
+                    $scope.nextSkill();
+                } else if (event.which == 192) {
+                    $('.menu').click();
+                } else if (event.which >= 112 && event.which <= 123) {
+                    $('#t-' + (event.which - 111)).click();
+                } else {
+                    return true;
+                }
+
+                event.preventDefault();
+                event.originalEvent.keyCode = 0;
+
+                return false;
+            });
+            $(document).keyup(function(event) {
+                if (event.which == 17)
+                    ctrl = 0;
+            });
+        }
+    ]);
+
+    window.onhelp = function() { return false; };
+
+    function getSkills() {
+        var templates = {"Care":[{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088TqpIAE"},"Name":"Customer ID & PIN","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088TqpIAE","Order__c":1,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"Customer's Name: \r\nPWC Level:\r\nMSISDN:"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088TpPIAU"},"Name":"Roaming Setup","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088TpPIAU","Order__c":3,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"ROAMING SETUP\r\n\r\nConfirmed travel area with customer:\r\n- Confirmed Check list\r\n- Confirmed max 90 days for red roaming"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UbxIAE"},"Name":"Adding Booster","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UbxIAE","Order__c":4,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"ADDING BOOSTER\r\n\r\nConfirmed data amount:\r\nConfirmed cost:\r\n- Educated on self service\r\n- Confirmed only until end of DOM\r\n- Customer aware booster has no alerts"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UlXIAU"},"Name":"Payment Arrangement","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UlXIAU","Order__c":5,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"PAYMENT ARRANGEMENT\r\n\r\nTotal amount of arrangement:\r\nConfirmed time of arrangement:\r\n- Confirmed process (if arrangement broken)\r\n- Sent TXT to confirm"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UlhIAE"},"Name":"Balance Enquiry","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UlhIAE","Order__c":6,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"BALANCE ENQUIRY\r\n\r\nPlan entitlements:\r\nEntitlements used:\r\nPromoted self service\r\nProvided billing cycle"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UlrIAE"},"Name":"Plan Change","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UlrIAE","Order__c":7,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"PLAN CHANGE\r\n\r\nCurrent Plan:\r\nNew Plan:\r\n- Entitlements on new plan\r\n- Billing cycle - explained Pro Rata\r\n- Promoted Self Service"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UlwIAE"},"Name":"Change MSISDN","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UlwIAE","Order__c":8,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"CHANGE MSISDN\r\n\r\nReason for change:\r\n- Explained cost of change\r\n- Educated on new number\r\n- Educated setup of PremTXT Bar, Voicemail and MyVF required"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088Um1IAE"},"Name":"SIM Swap","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088Um1IAE","Order__c":9,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"SIM SWAP\r\n\r\nReason for change:\r\nActivated SIM card number: 89610300000\r\n- Advised up to 3 hours to activate.\r\n- Sent TXT to confirm\r\n- Advised of default SIM PIN"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088UmyIAE"},"Name":"Pro Rata Explanation","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088UmyIAE","Order__c":10,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"PRO RATA EXPLANATION\r\n\r\nBilling Cycle:\r\n- Explanation of pro rata being daily charge for plan\r\n- Month in advance"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088TqqIAE"},"Name":"Adding Data Add On","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088TqqIAE","Order__c":11,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"ADDING DATA ADD ON\r\n\r\nAdd on data amount:\r\nCost: \r\nContract length:\r\n- Advise if the data pack is used before plan data or after\r\n- Read declaration"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD00000088VVUIA2"},"Name":"Payment","SkillGroup__c":"a2fD0000000TdxPIAS","Id":"a0sD00000088VVUIA2","Order__c":2,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TdxPIAS"},"Name":"Care","Id":"a2fD0000000TdxPIAS"},"Body__c":"PAYMENT\r\n\r\nCustomer declined self service\r\nAmount:\r\nSurcharge Info:\r\nOffered to set up direct debit\r\nCardholders Name: \r\nReceipt number:\r\nTXT Sent with receipt\r\nAccount Unbarred"}],"Care (Mumbai)":[{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQjqIAE"},"Name":"Unbilled Usage Domestic","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQjqIAE","Order__c":1,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller:\r\nAccount Verified: Y/N\r\nIssue: unbilled usage/balance explanation\r\nResolution: \r\nExplained usage/entitlements: Y/N\r\nCustomer within cap allowance: Y/N\r\nEducated about additional charges: Y/N\r\nCharges Valid: Y/N \r\nValue optimization done: Y/N\r\nOffered RPC $xx / pack (pack name) - Customer agreed/declined \r\nRead declaration and changes made: Y/N with immediate effect (explained pro rata)/ effective next Dom\r\nChkd account history and Credit offered with Auth TL/KC (Name) and updated Credit tool: $xx, SLA 24-48 hrs: Y/N\r\nCall transferred to: \r\nConfirmation txt sent: Y/N\r\nPromoted self care: Y/N\r\nAdvisor/VF Care"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQjvIAE"},"Name":"Billed Usage Domestic","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQjvIAE","Order__c":2,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller:\r\nAccount Verified: Y/N\r\nIssue: Billed charges\r\nResolution:        \r\nDisputing charges: Y/N on inv #\r\nDispute Reason: :  (eg: PSMS, intl data, intl calls, mpp, exceeded usage)\r\nExplained usage/entitlements: Y/N\r\nValue optimization done: Y/N\r\nOffered RPC $xx / pack (pack name) - Customer agreed/declined \r\nRead declaration and changes made: Y/N with immediate effect (explained pro rata)/ effective next Dom\r\nChkd account history and Credit offered with Auth TL/KC (Name) and updated Credit tool: $xx, SLA 24-48 hrs: Y/N\r\nCall transferred to: \r\nConfirmation txt sent: Y/N\r\nPromoted self care: Y/N\r\nAdvisor name/VF Care"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQkUIAU"},"Name":"My Vodafone","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQkUIAU","Order__c":3,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller:\r\nIssue: my VF pwd unlock/reset/registration\r\nAccount Verified: Y/N \r\nGuided customer through the process\r\nUnlocked account and reset password done\r\nEducated customer that the temp password is case sensitive and is valid for 24hrs: Y/N\r\nInformed customer that the new password must be 8-16 characters, must contain a number, an uppercase character and lower case character: Y/N\r\nEducated about forgot password link for future reference: Y/N\r\nAdvisor name/VF Care"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQkZIAU"},"Name":"Contract enquiry / Cancellation request","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQkZIAU","Order__c":4,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller:\r\nIssue: Contract End Date/ Cancellation / Payout\r\nAccount Verified: Y/N \r\nResolution: Customer wanted to check contract end date / cancel the account due to (reason for cancellation). Advised cancellation charges applicable\r\nCall transferred to: \r\nAdvisor name/VF Care"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQkjIAE"},"Name":"Direct Debit","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQkjIAE","Order__c":5,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller:\r\nIssue: Direct Debit Setup (Bank account)\r\nAccount Verified: Y/N \r\nResolution: Customer wanted to set up direct debit via bank account. Read the declaration and customer agreed. Changes made on the account\r\nDDSA form sent: Y/N\r\nConfirmation txt sent: Y/N\r\nPromoted self care: Y/N \r\nAdvisor name/VF Care\r\n\r\nCaller:\r\nIssue: Direct Debit Setup (Credit card)\r\nAccount Verified: Y/N \r\nResolution: Customer wanted to set up direct debit via credit card, advised customer of  CC surcharge fees, Customer stated Credit card is on his name, Changes made on the account\r\nConfirmation txt sent: Y/N \r\nPromoted self care: Y/N \r\nAdvisor name/VF Care\r\n\r\nCaller:\r\nIssue: Updating Direct debit details\r\nAccount Verified: Y/N \r\nResolution: Customer wanted to make changes to direct debit details, Updated information on customer’s account. \r\nConfirmation txt sent: Y/N \r\nPromoted self care: Y/N \r\nAdvisor name/VF Care"},{"attributes":{"type":"AgentTemplate__c","url":"/services/data/v29.0/sobjects/AgentTemplate__c/a0sD0000008hQkyIAE"},"Name":"Account Details change (Address)","SkillGroup__c":"a2fD0000000TnwMIAS","Id":"a0sD0000008hQkyIAE","Order__c":6,"SkillGroup__r":{"attributes":{"type":"SkillGroup__c","url":"/services/data/v29.0/sobjects/SkillGroup__c/a2fD0000000TnwMIAS"},"Name":"Care (Mumbai)","Id":"a2fD0000000TnwMIAS"},"Body__c":"Caller: \r\nIssue: Address Change\r\nAccount Verified: Y/N \r\nResolution: Confirmed the address and made changes. Advised customer all future correspondence will be sent to the new address. Also end-dated the old address\r\nConfirmation txt sent: Y/N \r\nAdvisor name/VF Care"}]};
+    var skills = [ ];
+    var index = 0;
+    for (var s in templates) {
+        templates[s].sort(function(a,b){
+            return a.Order__c - b.Order__c;
+        });
+        var skill = { name: s, index: index++, templates: templates[s], cols: [] };
+        for (var i = 0; i < skill.templates.length; i++) {
+            skill.templates[i].index = i + 1;
+            skill.templates[i].Body__c = skill.templates[i].Body__c.replace(/[\r]/g, '');
+        }
+
+        var split = (skill.templates.length / 2) + (skill.templates.length % 2 == 0 ? 0 : 1);
+        skill.cols[0] = skill.templates.slice(0, split);
+        skill.cols[1] = skill.templates.slice(split);
+        skills[skills.length] = skill;
+    }
+    return skills;
+    }
+
+    var agentServices = angular.module('agentServices', [])
+            .factory('Skills', function() {
+                return getSkills();
+            });
+
+    $(function() {
+        $('.menu').on('click', function() {
+            var m = $(this);
+            m.removeClass('go');
+
+            var anim = {
+                duration: 200,
+                progress: responsive.resize,
+                complete: function() { m.addClass('go'); }
+            };
+
+            if (m.hasClass('on')) {
+                m.removeClass('on');
+                $('#templateChoicesPanel').slideUp(anim);
+            } else {
+                m.addClass('on');
+                $('#templateChoicesPanel').slideDown(anim);
+            }
+        }).on('mouseout', function() {
+                    var m = $(this);
+                    window.setTimeout(function() {
+                        m.addClass('go');
+                    }, 100);
+                });
+
+
+        new ZeroClipboard(document.getElementById("copybtn"), {
+            moviePath: "lib/zeroclipboard/ZeroClipboard.swf"
+        }).on('dataRequested', function (clipBoardClient, args) {
+            var txt = $("#bodytxt").val();
+            //to make Notepad honour line breaks, we have to do some magic
+            var windowsText = txt.replace(/\n/g, '\r\n');
+            //replace html break with line breaks
+            windowsText = windowsText.replace(/<br\s*\/?>/g, "\r\n");
+            clipBoardClient.setText(windowsText);
+            $scope.activeSkill['resolution'].msgClass = 'msgSuccess';
+            $scope.activeSkill['resolution'].msgStatus = "Copied successfully to clipboard";
+        }).on('complete', function (clipBoardClient, args) {
+            var templateIds = [];
+            $(".template.highlighted .abbrev").each(function() {
+                templateIds.push($(this).data("template"));
+            });
+            if (templateIds.length > 0) {
+                Visualforce.remoting.Manager.invokeAction(
+                     '{!$RemoteAction.PR_AHTR_Agent.incrementUsageCount}',
+                     templateIds,
+                     function(result, event) {
+                        // Do nothing
+                     },
+                     { buffer: true, escape: true, timeout: 30000 }
+                 );
+            }
+        });
+
+
+    });
+
+</script>
+</body>
+
+</html>

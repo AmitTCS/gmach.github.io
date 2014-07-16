@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+-
+</style>
+    <script src="lib/jquery/jquery-1.10.2.js"></script>
+
+    <script src="js/spin.min.js"></script>
+    <script>
+
+        $(function(){
+
+
+            var opts = {
+                lines: 13, // The number of lines to draw
+                length: 20, // The length of each line
+                width: 10, // The line thickness
+                radius: 30, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 0, // The rotation offset
+                direction: 1, // 1: clockwise, -1: counterclockwise
+                color: '#000', // #rgb or #rrggbb or array of colors
+                speed: 1, // Rounds per second
+                trail: 60, // Afterglow percentage
+                shadow: false, // Whether to render a shadow
+                hwaccel: false, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: '134px', // Top position relative to parent in px
+                left: '134px' // Left position relative to parent in px
+            };
+            var target = document.getElementById('loadingDiv');
+            var spinner = new Spinner(opts).spin(target);
+
+
+           var $loading = $('#loadingDiv').hide();
+            $(document)
+                    .ajaxStart(function () {
+                        $loading.show();
+                    })
+                    .ajaxStop(function () {
+                        $loading.hide();
+                    });
+
+            $( ".trigger" ).click(function() {
+                $( ".result" ).load( "http://www.google.com" );
+            });
+
+        })
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+<button class="trigger">CLICK</button>
+
+<div id="loadingDiv"></div>
+<div class="result"></div>
+
+</body>
+</html>

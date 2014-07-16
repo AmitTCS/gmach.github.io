@@ -1,0 +1,19 @@
+<script type="text/javascript">
+
+    function mypopup()
+    {
+        var lowerOffset = 110;
+        var width = 200;
+        var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        if (is_firefox) {
+            width = 205;
+        }
+        var height = screen.height - lowerOffset;
+        var left = screen.width - width - 10;
+        var top = screen.height - height - lowerOffset;
+        mywindow = window.open("activitygenerator.html", "activitygenerator", "directories=0,titlebar=0,location=0,menubar=0,scrollbars=0,toolbar=0,status=0,resizable=1," +
+                "width=" + width + ",height=" + height + ",left="+left+",top="+top);
+    }
+</script>
+
+<a href="#" onclick="mypopup();">Launch</a>
