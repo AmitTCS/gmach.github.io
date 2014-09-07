@@ -1,0 +1,420 @@
+/*
+Sass Variables
+*/
+/*
+Sass Mixins
+*/
+/* line 5, ../scss/deloitte.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 9, ../scss/deloitte.scss */
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 13, ../scss/deloitte.scss */
+body {
+  background-color: #1a1a1a;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #a3a3a3;
+}
+
+/* line 21, ../scss/deloitte.scss */
+.btn {
+  color: white;
+  background-color: #2e2e2e;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  /* Another way to style btn-logo using pseudo element for content and absolute positioning for centering
+  &.btn-logo {
+    width: $btn-logo-width;
+    height: $btn-logo-width;
+    color: $white;
+    background-color: $secondary-color;
+    position: relative;
+    float: left;
+    &:after {
+      content: 'D';
+      font-weight: bold;
+      position: absolute;
+      top: 30%;
+      left: 40%
+    }
+}
+*/
+}
+/* line 27, ../scss/deloitte.scss */
+.btn.btn-logo {
+  width: 55px;
+  padding: 19.5px 0;
+  float: left;
+}
+/* line 49, ../scss/deloitte.scss */
+.btn.btn-visit {
+  width: 215px;
+  padding: 24.5px 0;
+  border: 2px solid white;
+  background-color: initial;
+  text-transform: uppercase;
+  margin-top: 3.75em;
+}
+/* line 57, ../scss/deloitte.scss */
+.btn.btn-add {
+  width: 40px;
+  padding: 12px 0;
+  margin: 0.9375em;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* line 66, ../scss/deloitte.scss */
+.btn.btn-close {
+  width: 40px;
+  padding: 12px 0;
+  float: right;
+  background-color: initial;
+  border: 2px solid black;
+  color: black;
+  margin: 0.9375em;
+}
+
+/* line 78, ../scss/deloitte.scss */
+h1, h2, h3, h4 {
+  color: white;
+  letter-spacing: 0.3125em;
+  text-transform: uppercase;
+}
+
+/* line 83, ../scss/deloitte.scss */
+h1 {
+  font-size: 5em;
+}
+
+/* line 86, ../scss/deloitte.scss */
+h2 {
+  font-size: 1.875em;
+}
+
+/* line 89, ../scss/deloitte.scss */
+h3 {
+  font-size: 0.875em;
+}
+
+/* line 94, ../scss/deloitte.scss */
+.container {
+  min-width: 960px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* line 100, ../scss/deloitte.scss */
+.quarter-col, .half-col, .three-quarter-col {
+  display: inline-block;
+  float: left;
+}
+
+/* line 107, ../scss/deloitte.scss */
+.quarter-col {
+  width: 25%;
+}
+/* line 109, ../scss/deloitte.scss */
+.quarter-col p {
+  padding: 0.625em;
+  font-size: 0.875em;
+}
+
+/* line 114, ../scss/deloitte.scss */
+.half-col {
+  width: 50%;
+}
+
+/* line 117, ../scss/deloitte.scss */
+.three-quarter-col {
+  width: 75%;
+}
+
+/* line 122, ../scss/deloitte.scss */
+.skip-main {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  text-align: left;
+  overflow: hidden;
+  color: white;
+}
+/* line 134, ../scss/deloitte.scss */
+.skip-main:active, .skip-main:focus, .skip-main:hover {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* line 142, ../scss/deloitte.scss */
+header[role="banner"] {
+  padding: 1.25em 0;
+  *zoom: 1;
+}
+/* line 8, ../scss/_mixins.scss */
+header[role="banner"]:before, header[role="banner"]:after {
+  content: " ";
+  display: table;
+}
+/* line 12, ../scss/_mixins.scss */
+header[role="banner"]:after {
+  clear: both;
+}
+/* line 145, ../scss/deloitte.scss */
+header[role="banner"] h4 {
+  float: right;
+}
+
+/* line 149, ../scss/deloitte.scss */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.9;
+  filter: alpha(opacity=80);
+}
+
+/* line 160, ../scss/deloitte.scss */
+.modal {
+  display: none;
+  background-color: white;
+  position: fixed;
+  z-index: 100;
+}
+/* line 165, ../scss/deloitte.scss */
+.modal h2 {
+  color: #1a1a1a;
+  padding-top: 6.25em;
+}
+/* line 169, ../scss/deloitte.scss */
+.modal p {
+  padding: 0 12.5em 12.5em 12.5em;
+  line-height: 1.5em;
+}
+
+/* line 174, ../scss/deloitte.scss */
+.carousel {
+  position: relative;
+}
+/* line 176, ../scss/deloitte.scss */
+.carousel .carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  padding-left: 0;
+  margin-left: -30%;
+  text-align: center;
+  list-style: none;
+}
+/* line 187, ../scss/deloitte.scss */
+.carousel .carousel-indicators .active {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  background-color: #828282;
+}
+/* line 193, ../scss/deloitte.scss */
+.carousel .carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #434343;
+  border-radius: 10px;
+}
+/* line 204, ../scss/deloitte.scss */
+.carousel .carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+/* line 209, ../scss/deloitte.scss */
+.carousel .carousel-inner .carousel-item {
+  display: none;
+}
+/* line 212, ../scss/deloitte.scss */
+.carousel .carousel-inner .carousel-item:first-child {
+  display: block;
+}
+/* line 216, ../scss/deloitte.scss */
+.carousel .carousel-control {
+  position: absolute;
+  top: 40%;
+  width: 15%;
+  font-size: 4.375em;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+/* line 227, ../scss/deloitte.scss */
+.carousel .carousel-control.left {
+  left: 0;
+}
+/* line 230, ../scss/deloitte.scss */
+.carousel .carousel-control.right {
+  right: 0;
+  left: auto;
+}
+
+/* line 236, ../scss/deloitte.scss */
+.hero {
+  padding: 3.75em 0;
+}
+/* line 239, ../scss/deloitte.scss */
+.hero h1 {
+  margin: 0 0 0 20px;
+}
+/* line 242, ../scss/deloitte.scss */
+.hero p {
+  font-size: 1.125em;
+  letter-spacing: 0.125em;
+  padding: 0 6.25em;
+}
+/* line 247, ../scss/deloitte.scss */
+.hero h4 {
+  color: #a3a3a3;
+}
+/* line 249, ../scss/deloitte.scss */
+.hero h4 .for-lbl {
+  font-family: Times New Roman, Times, serif;
+  font-style: italic;
+  font-size: 1em;
+  text-transform: initial;
+}
+
+/* line 257, ../scss/deloitte.scss */
+.image-blurb {
+  padding-bottom: 3.75em;
+}
+/* line 259, ../scss/deloitte.scss */
+.image-blurb p {
+  padding: 0 6.25em;
+  letter-spacing: 0.125em;
+}
+
+/* line 264, ../scss/deloitte.scss */
+.img-wrap {
+  position: relative;
+}
+
+/* line 267, ../scss/deloitte.scss */
+.image-layout, .more-layouts {
+  *zoom: 1;
+}
+/* line 8, ../scss/_mixins.scss */
+.image-layout:before, .image-layout:after, .more-layouts:before, .more-layouts:after {
+  content: " ";
+  display: table;
+}
+/* line 12, ../scss/_mixins.scss */
+.image-layout:after, .more-layouts:after {
+  clear: both;
+}
+/* line 269, ../scss/deloitte.scss */
+.image-layout .img-wrap, .more-layouts .img-wrap {
+  margin-bottom: 10px;
+}
+
+/* line 273, ../scss/deloitte.scss */
+.breakout-area {
+  background-color: white;
+  color: #333;
+  *zoom: 1;
+}
+/* line 8, ../scss/_mixins.scss */
+.breakout-area:before, .breakout-area:after {
+  content: " ";
+  display: table;
+}
+/* line 12, ../scss/_mixins.scss */
+.breakout-area:after {
+  clear: both;
+}
+/* line 278, ../scss/deloitte.scss */
+.breakout-area h2 {
+  color: #1a1a1a;
+}
+/* line 281, ../scss/deloitte.scss */
+.breakout-area .breakout-blurb {
+  width: 480px;
+  padding-left: 12%;
+  margin: 9.375em 0;
+  text-align: left;
+  float: left;
+}
+/* line 287, ../scss/deloitte.scss */
+.breakout-area .breakout-blurb h2 {
+  text-shadow: 1px 1px #2e2e2e;
+}
+/* line 291, ../scss/deloitte.scss */
+.breakout-area .breakout-pane {
+  margin-top: 9.375em;
+  background-color: #e6e6e6;
+  width: 650px;
+  height: 450px;
+  float: left;
+  margin-left: 2.5em;
+}
+
+/* line 300, ../scss/deloitte.scss */
+.separator {
+  width: 100%;
+  border: 1px solid #2e2e2e;
+  margin: 5em auto;
+  clear: both;
+  display: inline-block;
+}
+
+/* line 308, ../scss/deloitte.scss */
+footer[role="contentinfo"] .more-projects {
+  margin-bottom: 3.75em;
+}
+/* line 312, ../scss/deloitte.scss */
+footer[role="contentinfo"] .footer-project h2 {
+  font-size: 0.9375em;
+}
+/* line 315, ../scss/deloitte.scss */
+footer[role="contentinfo"] .footer-project p {
+  font-size: 0.875em;
+}
+/* line 319, ../scss/deloitte.scss */
+footer[role="contentinfo"] .copyright {
+  margin-bottom: 2.5em;
+}
+/* line 321, ../scss/deloitte.scss */
+footer[role="contentinfo"] .copyright .separator {
+  width: 10%;
+  margin: 2.5em;
+}
+/* line 325, ../scss/deloitte.scss */
+footer[role="contentinfo"] .copyright .copyright-blurb {
+  font-size: 0.75em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,330 @@
+@import "variables";
+@import "mixins";
+
+// Reset the box-sizing
+* {
+  @include box-sizing(border-box);
+}
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+body {
+  background-color: $primary-color;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: $font-color;
+}
+
+// Button classes
+.btn {
+  color: $white;
+  background-color: $secondary-color;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  &.btn-logo {
+    width: $btn-logo-width;
+    @include vertical-center-padding($btn-logo-height);
+    float: left;
+  }
+  /* Another way to style btn-logo using pseudo element for content and absolute positioning for centering
+  &.btn-logo {
+    width: $btn-logo-width;
+    height: $btn-logo-width;
+    color: $white;
+    background-color: $secondary-color;
+    position: relative;
+    float: left;
+    &:after {
+      content: 'D';
+      font-weight: bold;
+      position: absolute;
+      top: 30%;
+      left: 40%
+    }
+}
+*/
+  &.btn-visit {
+    width: $btn-visit-width;
+    @include vertical-center-padding($btn-visit-height);
+    border: 2px solid $white;
+    background-color: initial;
+    text-transform: uppercase;
+    margin-top: calc-em(60);
+  }
+  &.btn-add {
+    width: $btn-add-width;
+    @include vertical-center-padding($btn-add-height);
+    margin: calc-em(15);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &.btn-close {
+    width: $btn-close-width;
+    @include vertical-center-padding($btn-close-height);
+    float: right;
+    background-color: initial;
+    border: 2px solid black;
+    color: black;
+    margin: calc-em(15);
+  }
+}
+
+//typographic styles
+h1, h2, h3, h4 {
+  color: $white;
+  letter-spacing: calc-em(5);
+  text-transform: uppercase;
+}
+h1 {
+  font-size: calc-em(80);
+}
+h2 {
+  font-size: calc-em(30);
+}
+h3 {
+  font-size: calc-em(14);
+}
+
+//Container grid classes
+.container {
+  //This is fixed width. For responsive mobile support you can change min-width to max-width and remove the width
+  min-width: 960px;
+  width: 960px;
+  margin: 0 auto;
+}
+.quarter-col, .half-col, .three-quarter-col {
+  //These can be used for layout structure. I originally used fixed widths but found later
+  //it would not work well when nesting the layout. Eg under 'More layouts' there are nested
+  // 2 half-col columns within the second three-quarter-col.
+  display: inline-block;
+  float: left;
+}
+.quarter-col {
+  width: 25%;
+  p {
+    padding: calc-em(10);
+    font-size: calc-em(14);
+  }
+}
+.half-col {
+  width: 50%;
+}
+.three-quarter-col {
+  width: 75%;
+}
+
+//document sections
+.skip-main {
+  // Available only for screen-readers
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  text-align: left;
+  overflow: hidden;
+  color: $white;
+  &:active,
+  &:focus,
+  &:hover {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+}
+header[role="banner"] { //there can be many header tags but only one with role of banner
+  padding: calc-em(20) 0;
+  @include clearfix(); //required to clear the containing floated child elements
+  h4 {
+    float: right;
+  }
+}
+.overlay {
+  display: none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  opacity:0.9;
+  filter:alpha(opacity=80);
+}
+.modal {
+  display: none;
+  background-color: $white;
+  position:fixed;
+  z-index: 100;
+  h2 {
+    color: $primary-color;
+    padding-top: calc-em(100);
+  }
+  p {
+    padding: 0 calc-em(200) calc-em(200) calc-em(200);
+    line-height: calc-em(24);
+  }
+}
+.carousel {
+  position: relative;
+  .carousel-indicators {
+    // The carousel indicator circles at the bottom
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+    .active {
+      width: 12px;
+      height: 12px;
+      margin: 0;
+      background-color: $carousel-btn-active-color;
+    }
+    li {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 1px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-color: $carousel-btn-color;
+      border-radius: 10px;
+    }
+  }
+  .carousel-inner {
+    // The wrapper of the container slides
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    .carousel-item {
+      display: none;
+    }
+    .carousel-item:first-child {
+      display: block;
+    }
+  }
+  .carousel-control {
+    // The left and right arrow controls for navigating the carousel
+    position: absolute;
+    top: 40%;
+    width: 15%;
+    font-size: calc-em(70);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    text-decoration: none;
+    filter: alpha(opacity=50);
+    opacity: .5;
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+.hero {
+  // the first section after carousel and is the first main content skipped to when using screen reader
+  padding: calc-em(60) 0;
+  h1 {
+    margin: 0 0 0 20px;
+  }
+  p {
+    font-size: calc-em(18);
+    letter-spacing: calc-em(2);
+    padding: 0 calc-em(100);
+  }
+  h4 {
+    color: $font-color;
+    .for-lbl {
+      font-family: Times New Roman, Times, serif;
+      font-style: italic;
+      font-size: calc-em(16);
+      text-transform: initial;
+    }
+  }
+}
+.image-blurb {
+  padding-bottom: calc-em(60);
+  p {
+    padding: 0 calc-em(100);
+    letter-spacing: calc-em(2);
+  }
+}
+.img-wrap {
+  position: relative;
+}
+.image-layout, .more-layouts {
+  @include clearfix();//required to clear the containing floated child elements
+  .img-wrap {
+    margin-bottom: 10px;
+  }
+}
+.breakout-area {
+  background-color: $white;
+  color: #333;
+  //min-width: calc-em(2048);
+  @include clearfix();//required to clear the containing floated child elements
+  h2 {
+    color: $primary-color;
+  }
+  .breakout-blurb {
+    width: $breakout-blurb-width;
+    padding-left:12%;
+    margin: calc-em(150) 0;
+    text-align: left;
+    float: left;
+    h2 {
+      text-shadow: 1px 1px $secondary-color;
+    }
+  }
+  .breakout-pane {
+    margin-top: calc-em(150);
+    background-color: $breakout-color;
+    width: $pane-width;
+    height: $pane-height;
+    float: left;
+    margin-left: calc-em(40);
+  }
+}
+.separator {
+  width: 100%;
+  border: 1px solid $secondary-color;
+  margin: calc-em(80) auto;
+  clear: both;
+  display: inline-block;
+}
+footer[role="contentinfo"]  { //there can be many header tags but only one with role of contentinfo
+  .more-projects {
+    margin-bottom: calc-em(60);
+  }
+  .footer-project {
+    h2 {
+      font-size: calc-em(15);
+    }
+    p {
+      font-size: calc-em(14);
+    }
+  }
+  .copyright {
+    margin-bottom: calc-em(40);
+    .separator {
+      width: 10%;
+      margin: calc-em(40);
+    }
+    .copyright-blurb {
+      font-size: calc-em(12);
+      text-transform: uppercase;
+    }
+  }
+}

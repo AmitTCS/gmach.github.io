@@ -1,0 +1,36 @@
+/*
+Sass Mixins
+*/
+
+//To clear floats
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  *zoom: 1;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+  -moz-box-sizing: $boxmodel;
+  box-sizing: $boxmodel;
+}
+
+$browser-default-font-base: 16 !default; // Default
+
+// To convert pixels to em units.
+// Ideally would like to use rem units but this site needs to support IE8 which isn't compatible.
+@function calc-em($pixels, $context: $browser-default-font-base) {
+  @return #{$pixels/$context}em
+}
+
+//To vertically center padding
+@mixin vertical-center-padding($height) {
+  padding: (($height - $browser-default-font-base) / 2) 0;
+}
