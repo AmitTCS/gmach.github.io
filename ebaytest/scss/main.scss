@@ -1,0 +1,172 @@
+@import "mixins";
+
+$gradientColorStart: #eaead0;
+$gradientColorEnd: #e3e995;
+$arrowColor: #568712;
+$topArrowWidth: 7px;
+$bottomArrowWidth: 12px;
+$border-radius: 15px;
+$paddingWidth: 20px;
+$marginWidth: 15px;
+
+body {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+a:visited {
+  color: #315500;
+}
+a {
+  color: #468100;
+}
+.wrapper {
+/*  background: #fff;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -o-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -ms-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -khtml-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -khtml-border-radius: 5px 0 0 5px;*/
+  -webkit-box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.60);
+  -moz-box-shadow:    4px 4px 10px 0px rgba(50, 50, 50, 0.60);
+  box-shadow:         4px 4px 10px 0px rgba(50, 50, 50, 0.60);
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+@media only screen and (min-width: 5px) {
+  .container {
+    width: auto;
+    // disable V12 width on mobile
+
+  }
+}
+.header, .main, .footer {
+  @include clearfix;
+  padding: 0 $paddingWidth;
+}
+.pageTitle, .prev, .thumbnail, .description {
+  float: left;
+}
+.pageTitle {
+  font-size: 1.2em;
+}
+.pageTitle, .arrow-up {
+  margin: $marginWidth;
+}
+.navTitle {
+  text-decoration: underline;
+  cursor: pointer;
+  float: left;
+  margin-top: 12px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+.navTitle, .arrow-left, .arrow-right {
+  display: block;
+  float: left;
+}
+.arrow-up, .next {
+  float: right;
+}
+/* == FOLDED CORNERS */
+
+.note {
+  float: left;
+  position:relative;
+  padding: 12px 8px;
+  margin: 8px auto;
+  color:#fff;
+  background:#97C02F;
+  overflow:hidden;
+}
+
+.note:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  border-width: 0 8px 8px 0; /* This trick side-steps a webkit bug */
+  border-style:solid;
+  border-color:#fff $gradientColorStart #658E15 #658E15; /* A bit more verbose to work with .rounded too */
+  background:#658E15; /* For when also applying a border-radius */
+  display:block; width:0; /* Only for Firefox 3.0 damage limitation */
+  /* Optional: shadow */
+  -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.wrapper {
+  max-width:720px;
+  margin: 20px auto;
+}
+.header {
+  background: $gradientColorEnd;
+  background-image:
+  linear-gradient(to right,$gradientColorStart, $gradientColorEnd);
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+  height: 50px;
+  cursor: pointer;
+}
+.thumbnail {
+  width: 210px;
+  height: 150px;
+  padding: $marginWidth 0;
+}
+.description {
+  max-width: 420px;
+  padding: 15px;
+}
+.arrow-up {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: $topArrowWidth solid transparent;  /* left arrow slant */
+  border-right: $topArrowWidth solid transparent; /* right arrow slant */
+  border-bottom: $topArrowWidth solid $arrowColor; /* bottom, add background color here */
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-bottom: $bottomArrowWidth solid transparent;  /* left arrow slant */
+  border-top: $bottomArrowWidth solid transparent; /* right arrow slant */
+  border-right: $bottomArrowWidth solid $arrowColor; /* bottom, add background color here */
+  font-size: 0;
+  line-height: 0;
+  margin-top: 8px;
+}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-bottom: $bottomArrowWidth solid transparent;  /* left arrow slant */
+  border-top: $bottomArrowWidth solid transparent; /* right arrow slant */
+  border-left: $bottomArrowWidth solid $arrowColor; /* bottom, add background color here */
+  font-size: 0;
+  line-height: 0;
+  margin-top: 8px;
+}
+.footer {
+  clear: both;
+  border-top: 1px solid #e5e4c1;
+  height: 40px;
+}
+.error {
+  color: red;
+  margin: 100px auto;
+  width: 500px;
+}
